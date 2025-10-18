@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The foundation of Soul Origin</title>
+  <link rel="stylesheet" href="asset/style.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="top">
+      <a href="index.html" class="brand">Soul Origin</a>
+      <nav>
+        <ul>
+          <li><button id="musicBtn">🎵 Play Music</button></li>
+          <li><button id="themeToggle">🌙 Dark</button></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="map.html">Map</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h1>The foundation of Soul Origin</h1>
+      <p>Soul Origin was found by Nguyen Triet in September 11, 2001 in New York</p>
+      <p>The main properties that this coffee shop was opened that bring the best coffee for the customer and bring them a cool place to relax or work</p>
+      <h1>The history of Origin</h1>
+    <img src="asset/firstfound.png" alt="Soul of Coffee" style="width: 140px;height:140px;">
+    <img src="asset/relax.png" alt="Soul of Coffee" style="width: 140px;height:140px;">
+        <p> In 2001, Our first name is FIGARO coffee was opened in New York City, aiming to provide high-quality coffee and a cozy atmosphere for coffee enthusiasts. The founder, Nguyen Triet, envisioned a place where people could gather, work, and enjoy exceptional coffee.</p>
+        <p> Over the years, The shop has changed name to Soul Origin and change their main location to Nepal and expanded its presence across the Nepal, opening multiple locations in major cities. The brand became known for its commitment to sourcing premium beans, skilled baristas, and a welcoming environment.</p>
+        <p> Between 2018 and 2022, when corona virus at their peak. The foundation of Soul Origin embraced innovation by introducing mobile ordering and delivery services to cater to the evolving needs of its customers. The brand also launched seasonal drinks and food items that quickly became customer favorites.</p>
+        <p> Today, Soul Origin continues to thrive as a beloved coffee destination, staying true to its founding principles while adapting to the changing landscape of the coffee industry.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Soul Origin — <a href="policy.html">Policies</a></p>
+  </footer>
+</body>
+  <audio id="bgMusic" loop>
+    <source src="asset/Dark Souls III OST 1 - Main Theme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+<script>
+    const btn = document.getElementById("themeToggle");
+    const body = document.body;
+    const musicBtn = document.getElementById("musicBtn");
+    const music = document.getElementById("bgMusic");
+    let playing = false;
+
+  
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark");
+      btn.textContent = "☀️ Light";
+    }
+
+    btn.onclick = () => {
+      body.classList.toggle("dark");
+      const isDark = body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      btn.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    }
+    musicBtn.onclick = () => {
+      if (!playing) {
+    music.play();
+    musicBtn.textContent = "⏸️ Pause Music";
+      } else {
+    music.pause();
+    musicBtn.textContent = "🎵 Play Music";
+      }
+    playing = !playing;
+    };
+  </script>
+</html>

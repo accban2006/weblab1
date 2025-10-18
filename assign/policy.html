@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Soul Origin</title>
+  <link rel="stylesheet" href="asset/style.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="top">
+      <a href="index.html" class="brand"></a>
+      <nav>
+        <ul>
+          <li><button id="musicBtn">🎵 Play Music</button></li>
+          <li><button id="themeToggle">🌙 Dark</button></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="map.html">Map</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<body>
+<header class="site-header"><h1>Policies & Terms</h1></header>
+<main class="container">
+<section class ="card">
+<h2>Privacy Policy</h2>
+<p>We respect your privacy. Information collected through our forms is used only to respond to your inquiries and improve service quality. We do not sell or share data.</p>
+<section class="card"></section>
+<h2>Terms of Service</h2>
+<p>By using our website, you agree not to misuse or distribute content without permission. All rights reserved © Bean & Bloom.</p>
+</main>
+<footer class="site-footer"><p>&copy; 2025 Soul of Coffee</p></footer>
+</body>
+  <audio id="bgMusic" loop>
+    <source src="asset/Dark Souls III OST 1 - Main Theme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+<script>
+    const btn = document.getElementById("themeToggle");
+    const body = document.body;
+    const musicBtn = document.getElementById("musicBtn");
+    const music = document.getElementById("bgMusic");
+    let playing = false;
+
+  
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark");
+      btn.textContent = "☀️ Light";
+    }
+
+    btn.onclick = () => {
+      body.classList.toggle("dark");
+      const isDark = body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      btn.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    }
+    musicBtn.onclick = () => {
+      if (!playing) {
+    music.play();
+    musicBtn.textContent = "⏸️ Pause Music";
+      } else {
+    music.pause();
+    musicBtn.textContent = "🎵 Play Music";
+      }
+    playing = !playing;
+    };
+  </script>
+</html>

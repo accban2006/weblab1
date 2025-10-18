@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact Us - Soul Origin</title>
+  <link rel="stylesheet" href="asset/style.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="top">
+      <a href="index.html" class="brand">Soul Origin</a>
+      <nav>
+        <ul>
+          <li><button id="musicBtn">🎵 Play Music</button></li>
+          <li><button id="themeToggle">🌙 Dark</button></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><a href="map.html">Map</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+        <main class="container">
+    <section class="card">
+      <h1>Contact Us</h1>
+      <p>We’d love to hear from you! Please fill out the form below and we’ll get back to you soon.</p>
+
+      <form id="feedbackForm" onsubmit="return Submit();">
+        <section>
+          <legend>Personal Information</legend>
+
+          <label for="name">Name:</label><br>
+          <input type="text" id="name" name="name" placeholder="Your name" required><br><br>
+
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required><br><br>
+
+          <label for="tel">Phone:</label><br>
+          <input type="tel" id="tel" name="tel" placeholder="0123-456-789" ><br><br>
+
+          <label for="password">Password:</label><br>
+          <input type="password" id="password" name="password" required><br><br>
+
+          <label for="age">Age:</label><br>
+          <input type="number" id="age" name="age" min="10" max="100" step="1"><br><br>
+
+          <label for="date">Feedback Date:</label><br>
+          <input type="date" id="date" name="date"><br><br>
+
+          <label for="satisfaction">Coffee Satisfaction Level:</label><br>
+          <input type="range" id="satisfaction" name="satisfaction" min="0" max="10"><br><br>
+
+          <label for="file">Upload Profile Picture:</label><br>
+          <input type="file" id="file" name="file" accept="image/*"><br><br>
+
+          <label>Would you like to receive our newsletter?</label><br>
+          <input type="radio" id="yes" name="newsletter" value="yes">
+          <label for="yes">Yes</label>
+          <input type="radio" id="no" name="newsletter" value="no">
+          <label for="no">No</label><br>
+
+          <label><input type="checkbox" id="agree" name="agree" required> I agree to the terms and privacy policy.</label><br><br>
+
+          <label for="favorite">Favorite Meal:</label><br>
+          <select id="favorite" name="favorite">
+            <optgroup label="Drink">
+              <option>matcha lattee</option>
+              <option>Blue sky</option>
+              <option>Cappuccino</option>
+            </optgroup>
+            <optgroup label="Food">
+              <option>Pastry</option>
+              <option>chicken fried</option>
+              <option>Hamburger</option>
+            </optgroup>
+          </select><br><br>
+
+          <label for="message">Your Message:</label><br>
+          <textarea id="message" name="message" rows="4" placeholder="Write your feedback here..."></textarea><br><br>
+          </datalist><br><br>
+          <button type="submit">Send Feedback</button>
+          <button type="reset">Reset</button>
+        </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Soul Origin — <a href="policy.html">Policies</a></p>
+  </footer>
+</body>
+  <audio id="bgMusic" loop>
+    <source src="asset/Dark Souls III OST 1 - Main Theme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+<script>
+    const btn = document.getElementById("themeToggle");
+    const body = document.body;
+    const musicBtn = document.getElementById("musicBtn");
+    const music = document.getElementById("bgMusic");
+    let playing = false;
+    function Submit() {
+      alert("Your feedback has been sent!");
+      document.getElementById("feedbackForm").reset();
+      return false;
+    }
+  
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark");
+      btn.textContent = "☀️ Light";
+    }
+
+    btn.onclick = () => {
+      body.classList.toggle("dark");
+      const isDark = body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      btn.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    }
+    musicBtn.onclick = () => {
+      if (!playing) {
+    music.play();
+    musicBtn.textContent = "⏸️ Pause Music";
+      } else {
+    music.pause();
+    musicBtn.textContent = "🎵 Play Music";
+      }
+    playing = !playing;
+    };
+  </script>
+</html>
